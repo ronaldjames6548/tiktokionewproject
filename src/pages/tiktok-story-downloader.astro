@@ -1,0 +1,141 @@
+---
+import Container from "@components/container.astro";
+import Hero from "@components/hero.astro";
+import Layout from "@layouts/Layout.astro";
+import { changeLanguage } from "i18next";
+
+changeLanguage("en");
+const faqs = [
+	{
+		title: "Is it illegal to download TikTok stories?",
+		description: `You can download but you may not use TT story video to re-upload without permission.`,
+	},
+	{
+		title: "Can i save story videos from TikTok on iPhone/iPad?",
+		description: `Yes you can. Open the TikTok app and go to the TikTok profile with the story video you want to download. Tap on the profile picture and select "Copy Link" to get the story video link. On iOS devices, it is recommended that you update your OS to the latest version to download TikTok stories without errors.`,
+	},
+];
+---
+
+
+<Layout title="Tiktokio TikTok Story Downloader Download Tik Tok Story Free" description="Your choice for STiktokio-Tiktokio to download TikTok stories without watermark in High quality. TikTok story downloader is free to use without limits!">
+	<Container>
+		<Hero heading="Tiktokio - TikTok Story Downloader" subheading="Download TikTok Story, TikTok Story Downloader, Save TikTok Story Without Watermark"/>
+		<div class="content">
+      <div class="relative p-4">
+        <div class="max-w-screen-xl mx-auto">
+          <div
+            class="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal"
+          >
+            <div class="">
+              <h2 class="text-gray-900 font-bold text-4xl">
+                Portrait Photography In Early Days
+              </h2>
+              <br />
+              <hr />
+              <p class="text-base leading-8 my-5">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum.
+              </p>
+
+              <h3 class="text-2xl font-bold my-5">#1. What is Lorem Ipsum?</h3>
+
+              <p class="text-base leading-8 my-5">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum.
+              </p>
+
+              <blockquote
+                class="text-md italic leading-8 my-5 p-5 text-indigo-600 font-semibold"
+              >
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s
+              </blockquote>
+
+              <p class="text-base leading-8 my-5">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+		<div class="relative p-4">
+			<div class="max-w-screen-xl mx-auto px-6 py-10 bg-gray-200 rounded-lg mb-4">
+				<div class="mx-auto divide-y divide-gray-300 ">
+					<h2 class="text-2xl font-bold leading-10 tracking-tight">FAQ</h2>
+					<dl class="mt-10 space-y-6 divide-y divide-gray-300 ">
+						{
+							faqs.map((faq, index) => (
+								<div class="pt-6" x-data="{ open: false }">
+									<dt>
+										<button
+											type="button"
+											class="flex w-full items-start justify-between text-left text-gray-900"
+											@click="open = !open"
+											:aria-expanded="open.toString()"
+											:class="{'dark:bg-gray-300': open}">
+											<span class="text-base font-semibold leading-7" :class="{'': open}">{faq.title}</span>
+											<span class="ml-6 flex h-7 items-center">
+												<svg
+													class="h-6 w-6 transform transition-transform"
+													fill="none"
+													viewBox="0 0 24 24"
+													stroke-width="1.5"
+													stroke="currentColor"
+													aria-hidden="true"
+													:class="{'rotate-180': open}">
+													<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
+												</svg>
+											</span>
+										</button>
+									</dt>
+									<dd
+										x-transition:enter="transition ease-out duration-150"
+										x-transition:enter-start="opacity-0 transform scale-95"
+										x-transition:enter-end="opacity-100 transform scale-100"
+										x-transition:leave="transition ease-in duration-150"
+										x-transition:leave-start="opacity-100 transform scale-100"
+										x-transition:leave-end="opacity-0 transform scale-95"
+										class="mt-2 pr-12"
+										x-show="open">
+										<span class="text-base leading-7 text-gray-600">
+											<span set:html={faq.description}></span>
+										</span>
+									</dd>
+								</div>
+							))
+						}
+					</dl>
+				</div>
+				
+			</div>
+		</div>
+		</Container>
+</Layout>

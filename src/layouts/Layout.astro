@@ -1,0 +1,169 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import { pwaInfo } from "virtual:pwa-info";
+import Footer from "@components/footer.astro";
+import Navbar from "@components/navbar/navbar.astro";
+import "@fontsource-variable/inter";
+import { HeadHrefLangs } from "astro-i18next/components";
+import { SEO } from "astro-seo";
+import i18next from "i18next";
+
+export interface Props {
+  title?: string;
+  lang?: string;
+  description?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const { title, description, lang = null } = Astro.props;
+
+const makeTitle = title
+  ? `${title}`
+  : "";
+---
+
+<!doctype html>
+<html lang={lang ?? i18next.language}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/images/cropped-cropped-ico-32x32.webp" sizes="32x32"/>
+    <link rel="icon" href="/images/cropped-cropped-ico-192x192.webp" sizes="192x192"/>
+    <link rel="apple-touch-icon" href="/images/cropped-cropped-ico-180x180.webp"/>
+    <meta name="msapplication-TileImage" content="/images/cropped-cropped-ico-270x270.webp"/>
+    <meta name="theme-color" content="#ffffff" />
+    <HeadHrefLangs />
+    <ViewTransitions />
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/index.css" />
+    <SEO title={makeTitle} description={description} canonical={canonicalURL} />
+
+    <script is:inline>
+      function handleThemeChange() {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      }
+      handleThemeChange();
+      document.removeEventListener("astro:after-swap", handleThemeChange);
+      document.addEventListener("astro:after-swap", handleThemeChange);
+    </script>
+
+    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+    <script src="/src/pwa.ts"></script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Tiktokio FAQPage","mainEntity":[{"@type":"Question","name":"What is TikTokio - Tiktokio Downloader?","acceptedAnswer":{"@type":"Answer","text":"TikTokio is a free TikTok downloader available online. It helps people save TikTok videos without watermarks or convert TikTok videos to MP3 files with a few clicks. Its ease of use and high-quality downloads make it a popular TikTok saver among TT enthusiasts."}},{"@type":"Question","name":"Is TikTokio a Safe TikTok Video Downloader?","acceptedAnswer":{"@type":"Answer","text":"Yes, TikTokio is a 100% safe TikTok video downloader to use. We have an active SSL certificate to ensure the safety of users privacy"}},{"@type":"Question","name":"How to Download TikTok Video With No Watermark?","acceptedAnswer":{"@type":"Answer","text":"To download a TikTok video with no watermark, just use our TikTok downloader website. The steps are pretty simple. Please check the instructions above."}},{"@type":"Question","name":"How Do I Remove TikTok Watermark or TikTok Logo Online?","acceptedAnswer":{"@type":"Answer","text":"There are many ways to remove the TikTok watermark. The newest TikTok update allows creators to remove the Tiktok logo when the video is in draft. However, if you want to remove the TikTok watermark of the posted TikTok videos, you can go to our website (stiktokio.com). It’s one of the best TikTok downloaders. We allow users to download TikTok videos without watermarks for free, while not compromising on the video quality."}},{"@type":"Question","name":"How to Download video Tiktok no watermark?","acceptedAnswer":{"@type":"Answer","text":"Open Tik Tok app on your phone/or Web on your browser. Choose whatever video you want to download. Click to the Share button at the right bottom. Click the Copy Link button. Go back to https://stiktokio.com and paste your download link to the field above then click to the Download button. Wait for our server to do its job and then, save the video to your device."}},{"@type":"Question","name":"How to get the TikTok video download link?","acceptedAnswer":{"@type":"Answer","text":"Open your TikTok application. Choose the TikTok video that you want to download. Click Share and at the Share options, find Copy Link button. Your download URL is ready on the clipboard. For example, the link would look like this https://v.douyin.com/3vn57r/ or https://www.tiktok.com/@philandmore/video/6805867805452324102 or https://m.tiktok.com/v/6805867805452324102.html and more..."}},{"@type":"Question","name":"How to Save a TikTok Video on Desktop?","acceptedAnswer":{"@type":"Answer","text":"Saving TikTok videos to your desktop is simple and can be done using a TikTok video downloader. Follow the guide to help you save your favorite TikTok videos directly to your computer."}}]}</script>
+
+  </head>
+  <body class="white">
+    <Navbar />
+    <slot />
+    <Footer />
+    <style is:global>
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+</html>
+<style is:global>
+  @media (min-width: 768px) {
+    .app-box .app-box__info {
+      text-align: left;
+    }
+  }
+  .app-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .app-box .app-box__info {
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    .app-box {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 20px 24px;
+      gap: 64px;
+      margin-top: 84px;
+    }
+  }
+  .app-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px;
+    gap: 16px;
+    background: linear-gradient(167.7deg, #e6e2f4 0, #f4e2ed 100.38%);
+    border-radius: 12px;
+    margin-top: 28px;
+  }
+  .btn-accordion {
+    background: linear-gradient(90deg, #a982ba 0, #e27855 100%);
+  }
+  .hero-tools {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    /* padding: 0; */
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 8px;
+    width: 100%;
+  }
+  .downloader {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    padding: 24px 16px 60px;
+    gap: 15px;
+    color: #000;
+    background: linear-gradient(
+      318deg,
+      #0348dd 2.03%,
+      #8142f5 48.63%,
+      #ee4dd4 96.22%
+    );
+  }
+  li {
+    list-style: none !important;
+  }
+  .hero-tools .tool-item:first-child {
+    border-left: none;
+  }
+  @media (min-width: 768px) {
+    .hero-tools .tool-item {
+      width: auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+  .hero-tools .tool-item {
+    flex-direction: row;
+    padding: 8px;
+    gap: 8px;
+    width: 100%;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .flex-center {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  @media (min-width: 768px) {
+    .downloader .hero-heading {
+      margin-top: 0.5rem;
+    }
+  }
+  .downloader .hero-heading {
+    text-align: center;
+  }
+</style>

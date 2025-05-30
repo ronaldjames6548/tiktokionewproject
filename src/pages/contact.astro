@@ -1,0 +1,93 @@
+---
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Button from "@components/ui/button.astro";
+import Layout from "@layouts/Layout.astro";
+import { changeLanguage } from "i18next";
+
+changeLanguage("en");
+
+const contacts = [
+	{
+		title: "Marketing",
+		email: "test@yourcompany.com",
+		phone: "+1 (555) 555-5555",
+	},
+	{
+		title: "Human Resources",
+		email: "test@yourcompany.com",
+		phone: "+1 (555) 555-5555",
+	},
+	{
+		title: "Finance",
+		email: "test@yourcompany.com",
+		phone: "+1 (555) 555-5555",
+	},
+	{
+		title: "Research and Development",
+		email: "test@yourcompany.com",
+		phone: "+1 (555) 555-5555",
+	},
+];
+---
+
+<Layout title="Contact US - Tiktokio Tiktok Downloader" description="For Suggestions and quires about TikTokio">
+
+	<Container>
+		<Sectionhead>
+              <h2 class="text-gray-900 font-bold text-4xl">Contact us</h2>
+		<p class="text-base leading-8 my-5">If you have any questions, bug reports or feature suggestions for Stiktokio or Tiktokio, or if you just feel the need to say something, feel free to contact us via the contact form.</p>
+		</Sectionhead>
+<div class="font-[sans-serif]">
+      <div class="bg-gradient-to-r from-blue-700 to-blue-300 w-full h-36"></div>
+      <div class="-mt-20 mb-6 px-4">
+        <div class="mx-auto max-w-6xl shadow-lg p-8 relative bg-white rounded">
+          <form class="mt-8 grid sm:grid-cols-2 gap-4">
+            <div>
+              <input type='text' placeholder='Name'
+                class="w-full rounded py-2.5 px-4 border border-gray-300 focus:border-blue-600 text-sm outline-none" />
+            </div>
+            <div>
+              <input type='email' placeholder='Email'
+                class="w-full rounded py-2.5 px-4 border border-gray-300 focus:border-blue-600 text-sm outline-none" />
+            </div>
+            <div>
+              <input type='text' placeholder='Website'
+                class="w-full rounded py-2.5 px-4 border border-gray-300 focus:border-blue-600 text-sm outline-none" />
+            </div>
+            
+            <div>
+              <input type='text' placeholder='Subject'
+                class="w-full rounded py-2.5 px-4 border border-gray-300 focus:border-blue-600 text-sm outline-none" />
+            </div>
+            <div>
+              <textarea placeholder='Message' rows="6"
+                class="col-span-full w-full rounded px-4 border border-gray-300 focus:border-blue-600 text-sm pt-3 outline-none"></textarea>
+            </div>
+            <div class="flex items-center col-span-full">
+              <input id="checkbox1" type="checkbox"
+                class="w-4 h-4 mr-3" />
+              <label for="checkbox1" class="text-sm text-gray-400">I agree to the <a href="javascript:void(0);" class="underline">Terms and Conditions</a> and <a href="javascript:void(0);" class="underline">Privacy Policy</a></label>
+            </div>
+
+            <button type='button'
+              class="text-white w-max bg-[#007bff] hover:bg-blue-600 rounded text-sm px-4 py-2.5 mt-4 tracking-wide">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='#fff' class="mr-2 inline" viewBox="0 0 548.244 548.244">
+                <path fill-rule="evenodd" d="M392.19 156.054 211.268 281.667 22.032 218.58C8.823 214.168-.076 201.775 0 187.852c.077-13.923 9.078-26.24 22.338-30.498L506.15 1.549c11.5-3.697 24.123-.663 32.666 7.88 8.542 8.543 11.577 21.165 7.879 32.666L390.89 525.906c-4.258 13.26-16.575 22.261-30.498 22.338-13.923.076-26.316-8.823-30.728-22.032l-63.393-190.153z" clip-rule="evenodd" data-original="#000000" />
+              </svg>
+              Send Message
+            </button>
+          </form>
+		<p class="text-base leading-8 my-5">You can also contact us via email at <strong>support@stiktokio.com</strong>. We usually respond to messages within 24 hours.</p>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+	</Container>
+</Layout>
